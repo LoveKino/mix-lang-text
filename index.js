@@ -47,5 +47,7 @@ let matchLang = (line) => {
 };
 
 module.exports = {
-    getLangText
+    getLangText,
+    filterTextByLang,
+    matchLang
 };

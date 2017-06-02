@@ -1,6 +1,6 @@
 {
   "name": "mix-lang-text",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Simple Mixed Lang Text Format",
   "main": "index.js",
   "scripts": {
