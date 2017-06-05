@@ -11,6 +11,10 @@ describe('index', () => {
         assert.equal(getLangText('abc'), 'abc');
     });
 
+    it('false langType', () => {
+        assert.equal(getLangText('abc', false), 'abc');
+    });
+
     it('seperate', () => {
         let text = 'abc\n[readme-lang:zh]你好';
         assert.equal(getLangText(text), 'abc');

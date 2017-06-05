@@ -12,7 +12,8 @@ let getLangText = (text, langType) => {
  * lang part dividing line
  * ${langType}:
  */
-let filterTextByLang = (text, langType = 'en') => {
+let filterTextByLang = (text, langType) => {
+    langType = langType || 'en';
     let rets = [],
         curLang = 'en';
     let lines = text.split('\n');
