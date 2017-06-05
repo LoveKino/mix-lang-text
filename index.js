@@ -14,9 +14,15 @@ let getLangText = (text, langType) => {
  */
 let filterTextByLang = (text, langType) => {
     langType = langType || 'en';
-    let rets = [],
-        curLang = 'en';
+    let map = breakTextByLang(text);
+    return map[langType];
+};
+
+let breakTextByLang = (text) => {
+    let map = {};
+    let curLang = 'en';
     let lines = text.split('\n');
+
     for (let i = 0; i < lines.length; i++) {
         let line = lines[i];
         let matchRet = matchLang(line);
@@ -24,18 +30,16 @@ let filterTextByLang = (text, langType) => {
             let {
                 type, next
             } = matchRet;
-            if (type === langType) {
-                rets.push(next);
-            }
+            map[type] = map[type] || [];
+            map[type].push(next);
             curLang = type;
         } else {
-            if (curLang === langType) {
-                rets.push(line);
-            }
+            map[curLang] = map[curLang] || [];
+            map[curLang].push(line);
         }
     }
 
-    return rets;
+    return map;
 };
 
 let matchLang = (line) => {
@@ -50,5 +54,6 @@ let matchLang = (line) => {
 module.exports = {
     getLangText,
     filterTextByLang,
-    matchLang
+    matchLang,
+    breakTextByLang
 };
