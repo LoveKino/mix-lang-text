@@ -12,10 +12,14 @@ let getLangText = (text, langType) => {
  * lang part dividing line
  * ${langType}:
  */
-let filterTextByLang = (text, langType) => {
-    langType = langType || 'en';
+let filterTextByLang = (text, langType, defaultType='en') => {
+    langType = langType || defaultType;
     let map = breakTextByLang(text);
-    return map[langType];
+    if (map.hasOwnProperty(langType)) {
+        return map[langType];
+    } else {
+        return map[defaultType];
+    }
 };
 
 let breakTextByLang = (text) => {
